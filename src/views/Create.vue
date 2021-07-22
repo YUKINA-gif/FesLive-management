@@ -31,31 +31,31 @@
         </td>
       </tr>
       <tr>
-        <th>GitHub(フロント):</th>
+        <th>都市名(天気用):</th>
         <td>
           <input type="text" v-model="github_front" />
         </td>
       </tr>
       <tr>
-        <th>GitHub(バック):</th>
+        <th>ツイッターアカウント:</th>
         <td>
           <input type="text" v-model="github_api" />
         </td>
       </tr>
       <tr>
-        <th>制作期間:</th>
+        <th>開催初日:</th>
         <td>
           <input type="text" v-model="created" />
         </td>
       </tr>
        <tr>
-        <th>URL:</th>
+        <th>開催2日目:</th>
         <td>
           <input type="text" v-model="url" />
         </td>
       </tr>
       <tr>
-        <th>苦労した点:</th>
+        <th>開催3日目:</th>
         <td>
           <textarea
             type="text"
@@ -68,7 +68,20 @@
         </td>
       </tr>
       <tr>
-        <th>解決方法:</th>
+        <th>開催4日目:</th>
+        <td>
+          <textarea
+            type="text"
+            size="20"
+            rows="5"
+            cols="30"
+            wrap="”soft”"
+            v-model="solutions"
+          ></textarea>
+        </td>
+      </tr>
+      <tr>
+        <th>開催最終日:</th>
         <td>
           <textarea
             type="text"
