@@ -1,6 +1,6 @@
 <template>
   <div class="store_setting">
-    <!-- ポートフォリオ登録 -->
+    <!-- イベント情報登録 -->
     <Management />
     <h2>イベント情報登録</h2>
     <table>
@@ -33,25 +33,25 @@
       <tr>
         <th>都市名(天気用):</th>
         <td>
-          <input type="text" v-model="github_front" />
+          <input type="text" v-model="city_name" />
         </td>
       </tr>
       <tr>
         <th>ツイッターアカウント:</th>
         <td>
-          <input type="text" v-model="github_api" />
+          <input type="text" v-model="tw_account" />
         </td>
       </tr>
       <tr>
         <th>開催初日:</th>
         <td>
-          <input type="text" v-model="created" />
+          <input type="text" v-model="event_start_date" />
         </td>
       </tr>
-       <tr>
+      <tr>
         <th>開催2日目:</th>
         <td>
-          <input type="text" v-model="url" />
+          <input type="text" v-model="event_2_date" />
         </td>
       </tr>
       <tr>
@@ -63,7 +63,7 @@
             rows="5"
             cols="30"
             wrap="”soft”"
-            v-model="difficulties"
+            v-model="event_3_date"
           ></textarea>
         </td>
       </tr>
@@ -76,7 +76,7 @@
             rows="5"
             cols="30"
             wrap="”soft”"
-            v-model="solutions"
+            v-model="event_4_date"
           ></textarea>
         </td>
       </tr>
@@ -89,14 +89,14 @@
             rows="5"
             cols="30"
             wrap="”soft”"
-            v-model="solutions"
+            v-model="event_last_date"
           ></textarea>
         </td>
       </tr>
     </table>
 
     <button class="button" @click="createPtf">
-       <p v-if="loading">登録</p>
+      <p v-if="loading">登録</p>
       <vue-loading
         type="barsCylon"
         color="#fff"
@@ -118,18 +118,18 @@ export default {
       file: "",
       name: "",
       detail: "",
-      created:"",
-      url:"",
-      github_front:"",
-      github_api:"",
-      difficulties: "",
-      solutions: "",
-      loading: true
+      city_name: "",
+      tw_account: "",
+      event_start_date: "",
+      event_2_date: "",
+      event_3_date: "",
+      event_last_date: "",
+      loading: true,
     };
   },
   components: {
     Management,
-    VueLoading
+    VueLoading,
   },
   methods: {
     // 画像プレビュー
@@ -148,11 +148,11 @@ export default {
     },
     reset() {
       (this.preview = null),
-      (this.file = null),
-      (this.$el.querySelector('input[type="file"]').value = null);
+        (this.file = null),
+        (this.$el.querySelector('input[type="file"]').value = null);
     },
-    
-    // 店舗登録
+
+    // イベント登録
     createPtf() {
       this.loading = false;
       const formData = new FormData();
@@ -169,7 +169,7 @@ export default {
         .post("https://yukinas-portfolio.herokuapp.com/api/portfolio", formData)
         .then((response) => {
           console.log(response);
-          alert("登録しました。")
+          alert("登録しました。");
           this.loading = true;
         })
         .catch((error) => {
@@ -184,73 +184,73 @@ export default {
 
 <style scoped>
 /* ====================
-      店舗登録
+      イベント登録
 ==================== */
-  .store_setting {
-    width: 80%;
-    margin-left: 200px;
-  }
-  h2 {
-    font-size: 25px;
-  }
-  table {
-    width: 100%;
-    margin-top: 20px;
-    text-align: left;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
-  }
-  tr {
-    border: 1px solid #c2c2c2;
-  }
-  th {
-    width: 15%;
-    font-size: 18px;
-    padding: 5px;
-    background-color: rgb(212, 208, 201);
-  }
-  td {
-    width: 70%;
-    padding: 10px 5px;
-  }
-  td:nth-of-type(1) {
-    padding-bottom: 30px;
-  }
-  input,
-  textarea,
-  select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    font-size: 18px;
-  }
-  textarea {
-    display: block;
-  }
-  .image {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    padding-top: 60%;
-    margin: 10px 0;
-  }
-  .image img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .button {
-    margin: 20px 0 20px 50%;
-    width: 100px;
-    height: 35px;
-    font-weight: bold;
-    transform: translate(-50%);
-    background-color: rgb(108, 209, 115);
-  }
-  .loading {
-    margin-right: 20px;
-  }
+.store_setting {
+  width: 80%;
+  margin-left: 200px;
+}
+h2 {
+  font-size: 25px;
+}
+table {
+  width: 100%;
+  margin-top: 20px;
+  text-align: left;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}
+tr {
+  border: 1px solid #c2c2c2;
+}
+th {
+  width: 15%;
+  font-size: 18px;
+  padding: 5px;
+  background-color: rgb(212, 208, 201);
+}
+td {
+  width: 70%;
+  padding: 10px 5px;
+}
+td:nth-of-type(1) {
+  padding-bottom: 30px;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 18px;
+}
+textarea {
+  display: block;
+}
+.image {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-top: 60%;
+  margin: 10px 0;
+}
+.image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.button {
+  margin: 20px 0 20px 50%;
+  width: 100px;
+  height: 35px;
+  font-weight: bold;
+  transform: translate(-50%);
+  background-color: rgb(108, 209, 115);
+}
+.loading {
+  margin-right: 20px;
+}
 </style>
