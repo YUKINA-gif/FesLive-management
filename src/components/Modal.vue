@@ -2,9 +2,9 @@
   <transition name="modal">
     <div class="overlay" @click.self="$emit('close')">
       <div class="modal_window">
-        <!-- 店舗情報更新 -->
+        <!-- イベント情報更新 -->
         <h2 id="title">情報更新</h2>
-        <!-- 店舗情報 -->
+        <!-- イベント情報 -->
         <table>
           <tr>
             <th>アプリ名:</th>

@@ -1,9 +1,9 @@
 <template>
   <div class="store_update">
-    <!-- ポートフォリオ変更・削除 -->
+    <!-- イベント変更・削除 -->
     <Management />
     <h2>イベント変更・削除</h2>
-    <!-- 店舗一覧 -->
+    <!-- イベント一覧 -->
     <div class="stores_container">
       <div class="wrap store_flex">
         <div
@@ -31,9 +31,9 @@
             </button>
           </div>
         </div>
-        <!-- 店舗情報変更画面 -->
+        <!-- イベント情報変更画面 -->
         <Modal v-if="modal" @close="closeModal" :val="sendSData"></Modal>
-        <!-- 店舗削除画面 -->
+        <!-- イベント削除画面 -->
         <ModalDel
           v-if="modal_del"
           @close="closeModalDel"
@@ -71,7 +71,7 @@ export default {
     ModalDel,
   },
   methods: {
-    // ポートフォリオ情報取得
+    // イベント情報取得
     async getPtf() {
       await axios
         .get("https://feslive.herokuapp.com/api/event")
@@ -125,7 +125,7 @@ export default {
   margin-top: 20px;
 }
 /* ====================
-      店舗検索
+      イベント検索
 ==================== */
 .search {
   margin-top: 10px;
@@ -154,7 +154,7 @@ h2 {
   margin-left: 10px;
 }
 /* ====================
-    店舗一覧
+    イベント一覧
 ==================== */
 #store_title {
   font-size: 22px;
