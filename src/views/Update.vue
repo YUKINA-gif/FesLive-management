@@ -44,8 +44,6 @@
   </div>
 </template>
 
-<style scoped></style>
-
 <script>
 import Management from "../components/Management.vue";
 import Modal from "../components/Modal.vue";
